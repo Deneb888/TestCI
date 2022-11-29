@@ -38,6 +38,11 @@ extern HWND							hWnd;
 //These are the vendor and product IDs to look for.
 //Uses Lakeview Research's Vendor ID.
 
+// Original
+
+//int VendorID = 0x0483;
+//int ProductID = 0x5750;
+
 int VendorID = 0x0683;
 int ProductID = 0x5850;
 
