@@ -64,7 +64,7 @@ int _tmain(int argc, TCHAR* argv[], TCHAR* envp[])
 				cout << "Device not found" << endl;
 			}
 
-			cout << "allowable commands are: selchan, get, setinttime, setgain, exit..." << endl;
+			cout << "allowable commands are: selchan, get, setinttime, setgain, reset, exit..." << endl;
 			cout << ">";
 
 			string cmd;
@@ -105,9 +105,18 @@ int _tmain(int argc, TCHAR* argv[], TCHAR* envp[])
 
 				if (c == 0) {
 					int gain;
-					cout << "gain (0-high, 1-low): ";
+					cout << "gain (0-high, 1-low): " << endl;
 					cin >> gain;
 					theInterfaceObject.SetGainMode(gain);
+				}
+
+				c = cmd.compare("reset");
+
+				if (c == 0) {
+					bool found;
+					found = FindTheHID();
+					if(found) cout << "Device found" << endl;
+					else cout << "Device not found" << endl;
 				}
 
 				cout << ">";

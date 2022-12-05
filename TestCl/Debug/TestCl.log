@@ -1,9 +1,1 @@
-﻿  stdafx.cpp
-  HidMgr.cpp
-c:\users\zding\documents\workarea\sdk\uls24sdk-console\testcl2\testcl\hidmgr.cpp(783): warning C4101: 'DeviceNotificationHandle': unreferenced local variable
-  InterfaceObj.cpp
-  TestCl.cpp
-  TrimReader.cpp
-c:\users\zding\documents\workarea\sdk\uls24sdk-console\testcl2\testcl\trimreader.cpp(88): warning C4244: 'initializing': conversion from 'ULONGLONG' to 'DWORD', possible loss of data
-  Generating Code...
-  TestCl.vcxproj -> C:\Users\zding\Documents\WorkArea\SDK\ULS24SDK-Console\TestCl2\Debug\TestCl.exe
+﻿
