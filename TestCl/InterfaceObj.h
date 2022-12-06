@@ -40,6 +40,8 @@ public:
 	void SetRangeTrim(BYTE range);		// Normally not changed by user. See ULS24 Solution Kit Datasheet
 	void SetRampgen(BYTE rampgen);		// Normally not changed by user. See ULS24 Solution Kit Datasheet
 
+	void SetLEDConfig(BOOL IndvEn, BOOL Chan1, BOOL Chan2, BOOL Chan3, BOOL Chan4);
+
 //	BYTE GetV15();
 //	BYTE GetV20();
 //	BYTE GetRangeTrim();

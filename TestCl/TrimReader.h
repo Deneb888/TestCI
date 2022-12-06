@@ -110,6 +110,7 @@ public:
 	void SetIntTime(float);
 	void SelSensor(BYTE i);
 	void SetIntTime(float kfl, BYTE ch);
+	void SetLEDConfig(BOOL IndvEn, BOOL Chan1, BOOL Chan2, BOOL Chan3, BOOL Chan4);
 
 	void EEPROMRead();
 	void OnEEPROMRead();

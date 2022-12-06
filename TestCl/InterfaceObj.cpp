@@ -73,6 +73,10 @@ void CInterfaceObject::ResetTrim()
 	SetGainMode(1);			// Low gain
 	SetTXbin(0x8);
 	SetIntTime(1);			// 1 ms
+
+	SetLEDConfig(1, 1, 1, 1, 1);			// Set Multi LED mode, first enable all channels, then disable all channels.
+	Sleep(100);								// Why do we need to do this
+	SetLEDConfig(1, 0, 0, 0, 0);
 }
 
 void CInterfaceObject::SetV15(BYTE v15)
@@ -160,6 +164,15 @@ void  CInterfaceObject::SelSensor(BYTE chan)
 	ReadHIDInputReport();
 
 	cur_chan = (int)chan;
+}
+
+void  CInterfaceObject::SetLEDConfig(BOOL IndvEn, BOOL Chan1, BOOL Chan2, BOOL Chan3, BOOL Chan4)
+{
+	m_TrimReader.SetLEDConfig(IndvEn, Chan1, Chan2, Chan3, Chan4);
+
+	WriteHIDOutputReport();		// 
+	memset(TxData, 0, sizeof(TxData));
+	ReadHIDInputReport();
 }
 
 void CInterfaceObject::ProcessRowData()

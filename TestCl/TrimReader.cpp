@@ -738,6 +738,41 @@ void  CTrimReader::SetTXbin(BYTE txbin)
 	TxData[7] = 0x17;		//back code
 }
 
+void CTrimReader::SetLEDConfig(BOOL IndvEn, BOOL Chan1, BOOL Chan2, BOOL Chan3, BOOL Chan4)
+{
+	TxData[0] = 0xaa;		//preamble code
+	TxData[1] = 0x01;		//command
+	TxData[2] = 0x02;		//data length
+	TxData[3] = 0x23;		//data type, date edit first byte
+
+	if (!IndvEn)
+	{
+		TxData[4] = Chan1 ? 1 : 0;									//real data, date edit second byte
+	}
+	else
+	{
+		TxData[4] = 0x80;
+		if (Chan1)
+			TxData[4] |= 1;
+		if (Chan2)
+			TxData[4] |= 2;
+		if (Chan3)
+			TxData[4] |= 4;
+		if (Chan4)
+			TxData[4] |= 8;
+	}
+
+	TxData[5] = TxData[1] + TxData[2] + TxData[3] + TxData[4];		//check sum
+
+	if (TxData[5] == 0x17)
+		TxData[5] = 0x18;
+	else
+		TxData[5] = TxData[5];
+
+	TxData[6] = 0x17;		//back code
+	TxData[7] = 0x17;		//back code
+}
+
 void  CTrimReader::SetIntTime(float int_t) 
 {
 	unsigned char * hData = (unsigned char *) & int_t;	//
